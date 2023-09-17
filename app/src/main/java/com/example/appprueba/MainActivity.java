@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
-    private Button btn1, btn2;
+    private Button btn1, btn2, cambiarActivity;
+    private static final String MILOG = "LogsAndroid";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,15 +27,35 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btn2 = (Button) findViewById(R.id.btn2);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Has pulsado el segundo botón", Toast.LENGTH_SHORT).show();
-            }
-        });
+        btn2.setOnClickListener(accionBtn2);
+
+        cambiarActivity = (Button) findViewById(R.id.cambiarActivity);
+        cambiarActivity.setOnClickListener(accionCambiarActivity);
+
+        //Prueba logs
+        Log.e(MILOG, "Mensaje de error");
+        Log.w(MILOG, "Mensaje de warning");
+        Log.i(MILOG, "Mensaje de información");
+        Log.d(MILOG, "Mensaje de depuración");
+        Log.v(MILOG, "Mensaje de verbose");
     }
 
-    public void ir_a_segunda(View v){
+    private View.OnClickListener accionBtn2 = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Toast.makeText(getApplicationContext(), "Has pulsado el segundo botón", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    private View.OnClickListener accionCambiarActivity = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Toast.makeText(getApplicationContext(), "Cambiando de activity", Toast.LENGTH_SHORT).show();
+            ir_a_segunda(view);
+        }
+    };
+
+    private void ir_a_segunda(View v){
         Intent intent = new Intent(this, MainActivity2.class);
         Bundle bundle = new Bundle();
 
