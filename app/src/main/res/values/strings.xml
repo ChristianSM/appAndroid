@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">App Prueba</string>
     <string name="textoApp">Prueba String cambio christian</string>
+    <string name="textoPantalla2">Estamos en la pantalla 2</string>
 </resources>
