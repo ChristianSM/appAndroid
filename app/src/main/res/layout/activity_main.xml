@@ -41,7 +41,7 @@
         app:layout_constraintVertical_bias="0.714" />
 
     <Button
-        android:id="@+id/cambiarActivity"
+        android:id="@+id/btnCambiarActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pasar página"

@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.Toast;
 import android.util.Log;
 
-public class MainActivity extends AppCompatActivity {
-    private Button btn1, btn2, cambiarActivity;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private Button btn1, btn2, btnCambiarActivity;
     private static final String MILOG = "LogsAndroid";
 
     @Override
@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btn2 = (Button) findViewById(R.id.btn2);
-        btn2.setOnClickListener(accionBtn2);
+        btn2.setOnClickListener(this);
 
-        cambiarActivity = (Button) findViewById(R.id.cambiarActivity);
-        cambiarActivity.setOnClickListener(accionCambiarActivity);
+        btnCambiarActivity = (Button) findViewById(R.id.btnCambiarActivity);
+        btnCambiarActivity.setOnClickListener(this);
 
         //Prueba logs
         Log.e(MILOG, "Mensaje de error");
@@ -40,20 +40,20 @@ public class MainActivity extends AppCompatActivity {
         Log.v(MILOG, "Mensaje de verbose");
     }
 
-    private View.OnClickListener accionBtn2 = new View.OnClickListener() {
+    /*private View.OnClickListener accionBtn2 = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Toast.makeText(getApplicationContext(), "Has pulsado el segundo botón", Toast.LENGTH_SHORT).show();
         }
     };
 
-    private View.OnClickListener accionCambiarActivity = new View.OnClickListener() {
+    private View.OnClickListener accionBtnCambiarActivity = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Toast.makeText(getApplicationContext(), "Cambiando de activity", Toast.LENGTH_SHORT).show();
             ir_a_segunda(view);
         }
-    };
+    };*/
 
     private void ir_a_segunda(View v){
         Intent intent = new Intent(this, MainActivity2.class);
@@ -63,5 +63,17 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
 
+    }
+
+    @Override
+    public void onClick(View v){
+        if(v.getId() == R.id.btn2){
+            Toast.makeText(getApplicationContext(), "Has pulsado el segundo botón", Toast.LENGTH_SHORT).show();
+        }
+
+        if (v.getId() == R.id.btnCambiarActivity){
+            Toast.makeText(getApplicationContext(), "Cambiando de activity", Toast.LENGTH_SHORT).show();
+            ir_a_segunda(v);
+        }
     }
 }
