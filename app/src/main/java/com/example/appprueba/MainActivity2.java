@@ -12,20 +12,21 @@ import android.widget.Toast;
 public class MainActivity2 extends AppCompatActivity {
     private TextView textView2;
     private Button btnVolver;
+    private Intent intent;
+    private Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        Intent intent = this.getIntent();
-        Bundle bundle = intent.getExtras();
+        intent = this.getIntent();
+        bundle = intent.getExtras();
 
         Toast.makeText(this, bundle.getString("valor1"), Toast.LENGTH_SHORT).show();
         mostrarTexto(bundle.getString("valor1"));
 
         btnVolver = (Button) findViewById(R.id.btnVolver);
         btnVolver.setOnClickListener(accionBtnVolver);
-
     }
 
     private View.OnClickListener accionBtnVolver = new View.OnClickListener() {
@@ -42,7 +43,7 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     private void volver(View v){
-        Intent intent = new Intent(this, MainActivity.class);
+        intent = new Intent(this, MainActivity.class);
         //Bundle bundle = new Bundle();
         //bundle.putString("valor2", "Hemos vuelto desde la ventana 1");
         //intent.putExtras(bundle);

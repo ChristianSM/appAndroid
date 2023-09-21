@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/primerFragment"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Primer Fragment" />
+        <item
+            android:id="@+id/segundoFragment"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Segundo  Fragment" />
+        <item
+            android:id="@+id/tercerFragmet"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Tercer Fragment" />
+        <item
+            android:id="@+id/cuartoFragment"
+            android:icon="@drawable/side_nav_bar"
+            android:title= "Cuarto  Fragment" />
+        <item
+            android:id="@+id/quintoFragment"
+            android:icon="@drawable/side_nav_bar"
+            android:title="Quinto Fragment" />
+    </group>
+</menu>
