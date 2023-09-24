@@ -1,12 +1,16 @@
 package com.example.appprueba;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,10 +24,12 @@ public class PruebaFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private static final String LOG = "ALEX";
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
+    private MediaController mediaController;
     public PruebaFragment() {
         // Required empty public constructor
     }
@@ -53,12 +59,29 @@ public class PruebaFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        getActivity().setContentView(R.layout.fragment_prueba);
+
+        //incluirVideo();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        incluirVideo();
+
         return inflater.inflate(R.layout.fragment_prueba, container, false);
+    }
+
+    private void incluirVideo(){
+        VideoView videoView = (VideoView) getActivity().findViewById(R.id.contenedorVideo);
+
+        String ruta = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.la_pandilla_voladora;
+        Log.w(LOG, "ruta completa -> " + ruta);
+        Log.w(LOG, "Uri.parse -> " + Uri.parse(ruta));
+
+        videoView.setVideoURI(Uri.parse(ruta));
+        videoView.start();
+
     }
 }
