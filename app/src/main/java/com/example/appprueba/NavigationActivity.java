@@ -29,7 +29,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityNavigationBinding binding;
-
     private NavController navController;
     private Map<String, String> fragmentLeido = new HashMap<String, String>();
 
@@ -37,7 +36,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        darValorMap();
+        inicializarMap();
         binding = ActivityNavigationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -60,7 +59,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
 
         // **********************************************************
 
@@ -122,7 +120,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         return true;
     }
 
-    private void darValorMap(){
+    private void inicializarMap(){
         fragmentLeido.put("Fragment1", "0");
         fragmentLeido.put("Fragment2", "0");
         fragmentLeido.put("Fragment3", "0");
@@ -130,4 +128,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         fragmentLeido.put("Fragment5", "0");
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }
